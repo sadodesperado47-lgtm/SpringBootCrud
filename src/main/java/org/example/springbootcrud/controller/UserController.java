@@ -24,13 +24,15 @@ public class UserController {
     }
 
     @GetMapping
-    public String getUsers(Model model, @RequestParam(value="editId", required=false) Long editId) {
+    public String getUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        if (editId != null) {
-            User userToEdit = userService.getUserById(editId);
-            model.addAttribute("editUser", userToEdit);
-            model.addAttribute("editId", editId);
-        }
+        return "users";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editUserForm(Model model, @PathVariable Long id) {
+        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("editUser", userService.getUserById(id));
         return "users";
     }
 
