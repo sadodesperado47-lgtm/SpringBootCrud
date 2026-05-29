@@ -1,19 +1,21 @@
-package web.service;
+package org.example.springbootcrud.service;
 
+import org.example.springbootcrud.dao.UserDAO;
+import org.example.springbootcrud.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import web.model.User;
-import java.util.List;
-import web.dao.UserDAO;
 import org.springframework.transaction.annotation.Transactional;
+
+
+import java.util.List;
 
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private UserDAO userDAO;
 
+    @Autowired
     public void setUserDAO(UserDAO userDAO) {
 
         this.userDAO = userDAO;
