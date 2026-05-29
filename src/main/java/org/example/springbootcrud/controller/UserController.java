@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editUserForm(Model model, @PathVariable Long id) {
+    public String getUserById(Model model, @PathVariable Long id) {
         model.addAttribute("users", userService.getAllUsers());
         model.addAttribute("editUser", userService.getUserById(id));
         return "users";
